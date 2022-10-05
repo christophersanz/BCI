@@ -1,0 +1,28 @@
+server:
+  port: 9091
+  servlet:
+    context-path: /bci-auth
+
+spring:
+  application:
+    name: bci-auth
+  datasource:
+    url: jdbc:h2:mem:bciauthdatabase
+    username: sa
+    password:
+    driverClassName: org.h2.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    show-sql: true
+    hibernate:
+      ddl-auto: create
+
+  profiles:
+    active: development
+
+info:
+  project:
+    version: 1.0.0
+    title: Microservicio de Seguridad
+    description: Microservicio de Seguridad
+    expose.package: cl.bci

@@ -1,0 +1,45 @@
+server:
+  port: 9095
+  servlet:
+    context-path: /bci-user
+
+spring:
+  application:
+    name: bci-user
+  datasource:
+    url: jdbc:h2:mem:bciuserdatabase
+    username: sa
+    password: password
+    driverClassName: org.h2.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+
+  profiles:
+    active: development
+
+api-duration: 30000
+
+api:
+  auth:
+    token:
+      url: http://localhost:9091/bci-auth/api/login
+    create:
+      url: http://localhost:9091/bci-auth/api/auth/create
+
+logging:
+  pattern:
+    console: '%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n'
+    file: '%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n'
+  level:
+    com.pacifico.ecnf.project.generator: INFO
+    org.springframework.web.client.RestTemplate: DEBUG
+
+info:
+  project:
+    version: 1.0.0
+    title: Microservicio de Usuarios
+    description: Microservicio de Usuarios
+    expose.package: cl.bci

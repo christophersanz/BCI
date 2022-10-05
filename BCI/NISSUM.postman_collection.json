@@ -1,0 +1,92 @@
+{
+	"info": {
+		"_postman_id": "c7487bf0-ef63-4d85-9b55-c4cd0b35d29d",
+		"name": "NISSUM",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "7308478"
+	},
+	"item": [
+		{
+			"name": "UserToken",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "12345",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:9091/bci-auth/api/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9091",
+					"path": [
+						"bci-auth",
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateUser",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJhdXRob3JpdGllcyI6Ilt7XCJhdXRob3JpdHlcIjpcIlJPTEVfQURNSU5cIn0se1wiYXV0aG9yaXR5XCI6XCJST0xFX1VTRVJcIn1dIiwic3ViIjoiYWRtaW4iLCJpYXQiOjE2NjQ3NjY0MjYsImV4cCI6MTY2NDc4MDgyNn0.dYgFSmpGW1KQwLjnO75PX9op93n_U9ozYOvoo_zYPVqgWZkcwDMQxkRhq_Wndd6XhkEAu4JYUeXHjD-UEUugtg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"Juan Rodriguez\",\r\n    \"email\": \"juan@rodriguez.org\",\r\n    \"password\": \"P@ssword123\",\r\n    \"phones\": [\r\n        {\r\n            \"number\": \"1234567\",\r\n            \"citycode\": \"1\",\r\n            \"contrycode\": \"57\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9095/bci-user/api/user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9095",
+					"path": [
+						"bci-user",
+						"api",
+						"user"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
