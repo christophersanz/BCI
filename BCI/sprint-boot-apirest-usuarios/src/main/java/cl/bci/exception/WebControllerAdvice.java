@@ -16,16 +16,16 @@ public class WebControllerAdvice extends ResponseEntityExceptionHandler {
 
   public static final String GENERAL_ERROR_MESSAGE = "mensaje de error general";
 
-  @ExceptionHandler(value = KunturApiException.class)
-  ResponseEntity<ErrorResponse> handleRestTemplateException(KunturApiException ex, HttpServletRequest request) {
+  @ExceptionHandler(value = ApiException.class)
+  ResponseEntity<ErrorResponse> handleRestTemplateException(ApiException ex, HttpServletRequest request) {
     log.error("An error happened while calling API: {}", ex.getError());
     String message = ex.getError().split(",")[2].split(":")[1].replaceAll("\"", "");
     return new ResponseEntity<>(new ErrorResponse(ex.getStatusCode(), message.isEmpty()?GENERAL_ERROR_MESSAGE:message, request.getRequestURI()), ex.getStatusCode());
   }
 
-  @ExceptionHandler(value = KunturGeneralException.class)
+  @ExceptionHandler(value = GeneralException.class)
   @ResponseStatus(value = HttpStatus.BAD_REQUEST)
-  public ErrorResponse resourceGeneralException(KunturGeneralException ex, HttpServletRequest request) {
+  public ErrorResponse resourceGeneralException(GeneralException ex, HttpServletRequest request) {
     log.error("An error happened while calling API: {}", ex.getMessage());
     return new ErrorResponse(HttpStatus.BAD_REQUEST, ex.getMessage(), request.getRequestURI());
   }

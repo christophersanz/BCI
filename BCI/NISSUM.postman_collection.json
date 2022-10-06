@@ -7,86 +7,136 @@
 	},
 	"item": [
 		{
-			"name": "UserToken",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "username",
-							"value": "admin",
-							"type": "text"
+			"name": "API Security",
+			"item": [
+				{
+					"name": "UserToken - API Security",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "12345",
+									"type": "text"
+								}
+							]
 						},
-						{
-							"key": "password",
-							"value": "12345",
-							"type": "text"
+						"url": {
+							"raw": "http://localhost:9091/bci-auth/api/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9091",
+							"path": [
+								"bci-auth",
+								"api",
+								"login"
+							]
 						}
-					]
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "http://localhost:9091/bci-auth/api/login",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "9091",
-					"path": [
-						"bci-auth",
-						"api",
-						"login"
-					]
+				{
+					"name": "CreateUser  - API Security",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJhdXRob3JpdGllcyI6Ilt7XCJhdXRob3JpdHlcIjpcIlJPTEVfQURNSU5cIn0se1wiYXV0aG9yaXR5XCI6XCJST0xFX1VTRVJcIn1dIiwic3ViIjoiYWRtaW4iLCJpYXQiOjE2NjUwNjg1NDMsImV4cCI6MTY2NTA4Mjk0M30.Bf5sLhZSlJhJLGLXgAsdS2NeQ1_rHwkPS96hpuX7-AN8nrSINBdzeKQutfWop0mGrg5JGZe5e0zTtF9Z8Bv12Q",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"createdBy\": \"string\",\r\n  \"creationDate\": \"2022-10-06T14:56:43.211Z\",\r\n  \"email\": \"s.christopher3@gmail.com\",\r\n  \"enabled\": true,\r\n  \"lastModifiedBy\": \"string\",\r\n  \"lastModifiedDate\": \"2022-10-06T14:56:43.211Z\",\r\n  \"password\": \"111111\",\r\n  \"phones\": [\r\n    {\r\n      \"citycode\": \"lima\",\r\n      \"contrycode\": \"01\",\r\n      \"number\": \"111\"\r\n    }\r\n  ],\r\n  \"roles\": [\r\n    {\r\n      \"authority\": \"ROL_USER\"\r\n    }\r\n  ],\r\n  \"username\": \"maestro\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9091/bci-auth/api/auth/create",
+							"host": [
+								"localhost"
+							],
+							"port": "9091",
+							"path": [
+								"bci-auth",
+								"api",
+								"auth",
+								"create"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		},
 		{
-			"name": "CreateUser",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJIUzUxMiJ9.eyJhdXRob3JpdGllcyI6Ilt7XCJhdXRob3JpdHlcIjpcIlJPTEVfQURNSU5cIn0se1wiYXV0aG9yaXR5XCI6XCJST0xFX1VTRVJcIn1dIiwic3ViIjoiYWRtaW4iLCJpYXQiOjE2NjQ3NjY0MjYsImV4cCI6MTY2NDc4MDgyNn0.dYgFSmpGW1KQwLjnO75PX9op93n_U9ozYOvoo_zYPVqgWZkcwDMQxkRhq_Wndd6XhkEAu4JYUeXHjD-UEUugtg",
-							"type": "string"
+			"name": "API User",
+			"item": [
+				{
+					"name": "CreateUser -  API User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJhdXRob3JpdGllcyI6Ilt7XCJhdXRob3JpdHlcIjpcIlJPTEVfQURNSU5cIn0se1wiYXV0aG9yaXR5XCI6XCJST0xFX1VTRVJcIn1dIiwic3ViIjoiYWRtaW4iLCJpYXQiOjE2NjUwNjg1NDMsImV4cCI6MTY2NTA4Mjk0M30.Bf5sLhZSlJhJLGLXgAsdS2NeQ1_rHwkPS96hpuX7-AN8nrSINBdzeKQutfWop0mGrg5JGZe5e0zTtF9Z8Bv12Q",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"Juan Rodriguez\",\r\n    \"email\": \"juan@rodriguez.org\",\r\n    \"password\": \"P@ssword123\",\r\n    \"phones\": [\r\n        {\r\n            \"number\": \"1234567\",\r\n            \"citycode\": \"1\",\r\n            \"contrycode\": \"57\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9095/bci-user/api/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9095",
+							"path": [
+								"bci-user",
+								"api",
+								"user"
+							]
 						}
-					]
-				},
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"username\": \"Juan Rodriguez\",\r\n    \"email\": \"juan@rodriguez.org\",\r\n    \"password\": \"P@ssword123\",\r\n    \"phones\": [\r\n        {\r\n            \"number\": \"1234567\",\r\n            \"citycode\": \"1\",\r\n            \"contrycode\": \"57\"\r\n        }\r\n    ]\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:9095/bci-user/api/user",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "9095",
-					"path": [
-						"bci-user",
-						"api",
-						"user"
-					]
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		}
 	]
 }

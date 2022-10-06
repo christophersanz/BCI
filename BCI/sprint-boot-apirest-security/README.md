@@ -27,16 +27,33 @@ Ejemplo para levantar el api:
     $ java -jar .\target\sprint-boot-apirest-security-1.0-SNAPSHOT.jar
     ```
 
+---
+
+### Comprobación del servicio API User API Security (API Multicanal o de Reúso)
+
+#### mediante postman:
 * Se debe importar las colecciones en el postman para golpear a los servicios:
   NISSUM.postman_collection.json
 
 
-* Se debe importar las colecciones en el postman para golpear a los servicios.
+* 1ro. Para la obtención del token maestro se debe golpear al servicio: http://localhost:9091/bci-auth/api/login
+* 2do. Para la creación de un usuario se debe golpear al servicio: localhost:9091/bci-auth/api/auth/create
 
-Servicio para obtención del Token:
-* POST: http://localhost:9091/bci-auth/api/login
-* username:admin
-* password:12345
+
+* Obs: En está API se encuentra la validación de un correo existente.
+
+#### verificación de data con H2:
+* http://localhost:9091/bci-auth/h2-console
+* Driver Class: org.h2.Driver
+* JDBC URL: jdbc:h2:mem:bciauthdatabase
+* User Name: sa
+* Password: 
+
+#### mediante swagger:
+* http://localhost:9091/bci-auth/swagger-ui.html
+* Authorize: obtener el token del servicio de login (1ro) usando postman ej. Bearer eyJhbGciOiJIUzUxMiJ9.eyJhdXRob3JpdGllcyI6Ilt7XCJhdXRob3JpdHlcIjpcIlJPTEVfQURNSU5cIn0se1wiYXV0aG9yaXR5XCI6XCJST0xFX1VTRVJcIn1dIiwic3ViIjoiYWRtaW4iLCJpYXQiOjE2NjUwNzI3MjcsImV4cCI6MTY2NTA4NzEyN30.g9sEaeIAz4Xx3n3P9_OYvx_mQyogEzK1ZLMMFqDWbR3mCWDCIJmxjtLvkaXg1z63676msFLzDioJGkImPOMDww
+* Body: recoger la petición del servicio crear usuario (2do) modificando al menos los campos username y email 
+* Execute
 
 ***
 

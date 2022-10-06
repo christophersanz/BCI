@@ -16,7 +16,7 @@ public class ApiRestTemplateErrorHandler extends DefaultResponseErrorHandler {
       try (BufferedReader reader = new BufferedReader(new InputStreamReader(response.getBody()))) {
         String httpBodyResponse = reader.lines().collect(Collectors.joining(""));
         String errorMessage = httpBodyResponse;
-        throw new KunturApiException(response.getStatusCode(), errorMessage);
+        throw new ApiException(response.getStatusCode(), errorMessage);
       }
     }
   }

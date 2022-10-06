@@ -6,13 +6,13 @@ import org.springframework.http.HttpStatus;
 
 @Getter
 @Setter
-public class KunturApiException extends RuntimeException {
+public class ApiException extends RuntimeException {
 
   private static final long serialVersionUID = 1L;
   private final HttpStatus statusCode;
   private final String error;
 
-  public KunturApiException(HttpStatus statusCode, String error) {
+  public ApiException(HttpStatus statusCode, String error) {
     this.statusCode = statusCode;
     this.error = error;
   }

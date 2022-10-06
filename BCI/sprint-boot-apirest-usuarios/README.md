@@ -1,4 +1,4 @@
-# API usuarios - BCI
+# API user - BCI
 
 ## Iniciando
 
@@ -26,29 +26,30 @@ Ejemplo para levantar el api:
     $ mvn clean install
     $ java -jar .\target\sprint-boot-apirest-usuarios-1.0-SNAPSHOT.jar
     ```
+---
 
+### Comprobación del servicio API User (API Canal o de un solo squad)
+
+#### mediante postman:
 * Se debe importar las colecciones en el postman para golpear a los servicios:
   NISSUM.postman_collection.json
 
 
-* Se debe importar las colecciones en el postman para golpear a los servicios.
+* 1ro. Para la obtención del token maestro se debe golpear al servicio: http://localhost:9091/bci-auth/api/login (API Multicanal)
+* 2do. Para la creación de un usuario se debe golpear al servicio: http://localhost:9095/bci-user/api/user
 
-Servicio para creación del usuario:
-* POST: http://localhost:9095/bci-user/api/user
-* token: api security
-* body:
-  {
-  "username": "Juan Rodriguez",
-  "email": "juan@rodriguez.org",
-  "password": "P@ssword123",
-  "phones": [
-  {
-  "number": "1234567",
-  "citycode": "1",
-  "contrycode": "57"
-  }
-  ]
-  }
+
+* Obs: En está API se encuentra la validación del formato de correo y la contraseña.
+
+#### verificación de data con H2:
+* Los datos se almacenan en la API security
+
+#### mediante swagger:
+* http://localhost:9095/bci-user/swagger-ui.html
+* Authorize: obtener el token del servicio de login (1ro) usando postman ej. Bearer eyJhbGciOiJIUzUxMiJ9.eyJhdXRob3JpdGllcyI6Ilt7XCJhdXRob3JpdHlcIjpcIlJPTEVfQURNSU5cIn0se1wiYXV0aG9yaXR5XCI6XCJST0xFX1VTRVJcIn1dIiwic3ViIjoiYWRtaW4iLCJpYXQiOjE2NjUwNzI3MjcsImV4cCI6MTY2NTA4NzEyN30.g9sEaeIAz4Xx3n3P9_OYvx_mQyogEzK1ZLMMFqDWbR3mCWDCIJmxjtLvkaXg1z63676msFLzDioJGkImPOMDww
+* Body: recoger la petición del servicio crear usuario (2do) modificando al menos los campos username, email y password
+* Execute
+
 
 ***
 

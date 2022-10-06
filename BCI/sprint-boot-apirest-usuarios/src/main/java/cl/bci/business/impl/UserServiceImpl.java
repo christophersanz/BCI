@@ -1,7 +1,7 @@
 package cl.bci.business.impl;
 
 import cl.bci.business.UserService;
-import cl.bci.exception.KunturGeneralException;
+import cl.bci.exception.GeneralException;
 import cl.bci.expose.response.UserResponse;
 import cl.bci.model.User;
 import cl.bci.repository.UserJpaRepository;
@@ -87,7 +87,7 @@ public class UserServiceImpl implements UserService {
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(valor);
         if (!matcher.matches()) {
-            throw new KunturGeneralException(mensaje);
+            throw new GeneralException(mensaje);
         }
     }
 
