@@ -29,7 +29,7 @@ Ejemplo para levantar el api:
 
 ---
 
-### Comprobación del servicio API User API Security (API Multicanal o de Reúso)
+### Comprobación del servicio API Security (API Multicanal o de Reúso)
 
 #### mediante postman:
 * Se debe importar las colecciones en el postman para golpear a los servicios:
